@@ -53,7 +53,7 @@ describe('Test the overall endpoints are working', () => {
     request(App).get('/events/Gold%20Coast').set({
       Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUwOTk1MDgyMywiZXhwIjoxNjA5OTU0NDgwLCJsb2NhdGlvbiI6ImJyaXNiYW5lIiwianRpIjoiYzlhNjdjZDktMmQ4Ni00ZWVhLTljOGEtMmMyNzI3Y2NlMWQ3In0.9QbIHP7xVgFFXtb6fI6XbrWjEurKzn0WZvdHW8PhzLE",
     }).then((response) => {
-      expect(response.body.length < 5);
+      expect(response.body.length === 5);
       done();
     });
   });
