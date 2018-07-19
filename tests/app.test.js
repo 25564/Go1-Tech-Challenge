@@ -74,6 +74,15 @@ describe('Test the overall endpoints are working', () => {
     });
   });
 
+  test('Invalid Malformed Authorization Header should 403', (done) => {
+    request(App).get('/events/Cairns').set({
+      Authorization: "Bearer",
+    }).then((response) => {
+      expect(response.statusCode).toBe(403);
+      done();
+    });
+  });
+
   test('Incorrect endpoint should 403', (done) => {
     request(App).get('/foo/').set({
       Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUwOTk1MDgyMywiZXhwIjoxNjA5OTU0NDgwLCJsb2NhdGlvbiI6ImJyaXNiYW5lIiwianRpIjoiYzlhNjdjZDktMmQ4Ni00ZWVhLTljOGEtMmMyNzI3Y2NlMWQ3In0.9QbIHP7xVgFFXtb6fI6XbrWjEurKzn0WZvdHW8PhzLE",
